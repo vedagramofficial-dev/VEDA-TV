@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><resources>
-    <!-- VEDA TV dark purple dialog theme -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- VEDA TV dark purple dialog theme. Keep title styling on the
+         MaterialComponents defaults to avoid dialog inflation crashes. -->
     <style name="AlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@drawable/dialog_background</item>
-        <item name="android:titleTextStyle">@style/AlertTitleTextStyle</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/AlertTitleTextStyle</item>
         <item name="android:textColorPrimary">@color/tv_white</item>
         <item name="windowMinWidthMajor">90%</item>
         <item name="windowMinWidthMinor">70%</item>
@@ -13,40 +13,28 @@
         <item name="buttonBarPositiveButtonStyle">@style/AlertButtonStyle</item>
         <item name="buttonBarNegativeButtonStyle">@style/AlertButtonStyle</item>
         <item name="buttonBarNeutralButtonStyle">@style/AlertButtonStyle</item>
-    </style><style name="AlertTitleStyle">
-    <item name="android:layout_marginTop">6dp</item>
-    <item name="android:layout_marginBottom">12dp</item>
-    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
-    <item name="android:textColor">?attr/colorPrimary</item>
-</style>
+    </style>
 
-<style name="AlertTitleTextStyle" parent="@style/TextAppearance.AppCompat.Title">
-    <item name="android:layout_marginTop">2dp</item>
-    <item name="android:layout_marginBottom">6dp</item>
-    <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
-    <item name="android:textColor">?attr/colorPrimary</item>
-    <item name="android:textSize">20sp</item>
-</style>
+    <style name="AlertButtonStyle" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
 
-<style name="AlertButtonStyle" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-    <item name="android:layout_marginLeft">6dp</item>
-    <item name="android:layout_marginRight">6dp</item>
-    <item name="android:layout_marginTop">6dp</item>
-    <item name="android:layout_marginBottom">0dp</item>
-</style>
+    <style name="Widget.App.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="hintTextColor">?attr/colorAccent</item>
+    </style>
 
-<style name="Widget.App.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-    <item name="hintTextColor">?attr/colorAccent</item>
-</style>
-
-<style name="TransparentDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
-    <item name="android:windowCloseOnTouchOutside">false</item>
-    <item name="android:windowIsTranslucent">true</item>
-    <item name="android:windowContentOverlay">@null</item>
-    <item name="android:colorBackground">@android:color/transparent</item>
-    <item name="android:backgroundDimEnabled">true</item>
-    <item name="android:backgroundDimAmount">0.5</item>
-    <item name="android:windowFrame">@null</item>
-</style>
-
+    <style name="TransparentDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
 </resources>
