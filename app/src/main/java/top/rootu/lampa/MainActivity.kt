@@ -481,6 +481,70 @@ class MainActivity : BaseActivity(),
 
     override fun onBrowserPageFinished(view: ViewGroup, url: String) {
         logDebug("onBrowserPageFinished url: $url")
+
+        // VEDA TV theme: apply a dark purple palette to the remotely loaded Lampa page.
+        // This is intentionally injected without replacing the existing page or its logic.
+        browser?.evaluateJavascript(
+            """
+            (function() {
+                try {
+                    if (!document || !document.documentElement) return;
+                    var style = document.getElementById('veda-tv-purple-theme');
+                    if (!style) {
+                        style = document.createElement('style');
+                        style.id = 'veda-tv-purple-theme';
+                        (document.head || document.documentElement).appendChild(style);
+                    }
+                    style.textContent = `
+                        :root {
+                            color-scheme: dark;
+                            --veda-tv-bg: #090512;
+                            --veda-tv-panel: #171025;
+                            --veda-tv-purple: #9B4DFF;
+                            --veda-tv-purple-deep: #7200FF;
+                            --veda-tv-text: #FFFFFF;
+                        }
+                        html, body {
+                            background: #090512 !important;
+                            color: #FFFFFF;
+                        }
+                        .head, .head__body, .head__menu, .menu, .menu__body,
+                        .menu__list, .menu__item, .settings, .settings__body,
+                        .settings__content, .modal, .modal__body, .selectbox,
+                        .selectbox__content, .full, .full-start, .full-start__body,
+                        .card__view, .torrent-item, .torrent-list, .activity,
+                        .extensions, .extensions__body {
+                            background-color: #171025 !important;
+                        }
+                        .button--active, .menu__item.focus, .menu__item.traverse,
+                        .selectbox__item.focus, .settings__item.focus,
+                        .card.focus .card__view, .card:hover .card__view {
+                            outline-color: #9B4DFF !important;
+                            border-color: #9B4DFF !important;
+                        }
+                        .menu__item, .settings__item, .selectbox__item,
+                        .modal, .modal__title, .full-start__title,
+                        .card__title, .head__title {
+                            color: #FFFFFF !important;
+                        }
+                        .button--primary, .button--active, .selector__button--active {
+                            background-color: #7200FF !important;
+                            border-color: #9B4DFF !important;
+                            color: #FFFFFF !important;
+                        }
+                        input, textarea, select, .input__input {
+                            background-color: #171025 !important;
+                            color: #FFFFFF !important;
+                            border-color: #9B4DFF !important;
+                        }
+                    `;
+                } catch (e) {
+                    console.log('VEDA TV theme injection failed', e);
+                }
+            })();
+            """.trimIndent(),
+            null
+        )
         // Restore Lampa settings and reload if migrate flag set
         if (migrate) {
             migrateSettings()
