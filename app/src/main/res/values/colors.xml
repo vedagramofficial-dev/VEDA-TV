@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <color name="lampa_background">#090512</color>
     <color name="lampa_label_bg">#171025</color>
+    <color name="lampa_label_bgcolor">#171025</color>
     <color name="purple_500">#9B4DFF</color>
     <color name="purple_700">#7200FF</color>
     <color name="teal_200">#D946FF</color>
