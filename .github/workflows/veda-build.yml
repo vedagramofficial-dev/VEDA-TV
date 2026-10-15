@@ -1,38 +1,45 @@
-
 name: VEDA TV APK
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+workflow_dispatch:
+inputs:
+version_name:
+description: 'VEDA TV version (e.g. 1.0.1)'
+required: true
+default: '1.0.1'
+type: string
+version_code:
+description: 'Version code (increase for every new APK)'
+required: true
+default: '2'
+type: string
 
 permissions:
-  contents: read
+contents: read
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-      - name: Get source code
-        uses: actions/checkout@v4
+steps:
+  - name: Get source code
+    uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '17'
+  - name: Set up Java
+    uses: actions/setup-java@v4
+    with:
+      distribution: temurin
+      java-version: '17'
 
-      - name: Enable Gradle
-        run: chmod +x gradlew
+  - name: Enable Gradle
+    run: chmod +x gradlew
 
-      - name: Build APK
-        run: ./gradlew assembleLiteDebug
+  - name: Build APK
+    run: ./gradlew assembleLiteDebug -PvedaVersionName="${{ inputs.version_name }}" -PvedaVersionCode="${{ inputs.version_code }}"
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: VEDA-TV-APK
-          path: app/build/outputs/apk/lite/debug/*.apk
-          if-no-files-found: error
+  - name: Upload APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: VEDA-TV-APK
+      path: app/build/outputs/apk/lite/debug/*.apk
+      if-no-files-found: error
