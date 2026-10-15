@@ -55,7 +55,7 @@ android {
     //noinspection GradleDependency
     compileSdk 34
     defaultConfig {
-        applicationId "top.rootu.lampa"
+        applicationId "com.vedatv.app"
         minSdkVersion 16
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 28
