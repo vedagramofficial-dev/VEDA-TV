@@ -543,7 +543,7 @@ class MainActivity : BaseActivity(),
                 }
             })();
             """.trimIndent(),
-            null
+            { _: String -> }
         )
         // Restore Lampa settings and reload if migrate flag set
         if (migrate) {
