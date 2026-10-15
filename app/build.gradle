@@ -59,8 +59,8 @@ android {
         minSdkVersion 16
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 28
-        versionCode (project.findProperty("vedaVersionCode") ?: getVersionCode()).toString().toInteger()
-versionName (project.findProperty("vedaVersionName") ?: getVersionName()).toString()
+                versionCode = (project.findProperty("vedaVersionCode") ?: getVersionCode()).toString().toInteger()
+        versionName = (project.findProperty("vedaVersionName") ?: getVersionName()).toString()
         buildConfigField "String", "REPO_ID", "\"${getRepoId()}\""
         multiDexEnabled = true // required when setting minSdkVersion to 20 or lower
         // Use SupportLibrary for vectors
