@@ -1,3 +1,15 @@
-<item name="colorPrimary">@color/purple_500</item>
-<item name="colorPrimaryDark">@color/purple_700</item>
-<item name="colorAccent">@color/teal_200</item>
+<?xml version="1.0" encoding="utf-8"?><resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- VEDA TV dark purple theme -->
+    <style name="Theme.LAMPA" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>    <item name="android:windowBackground">@color/lampa_background</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="alertDialogTheme">@style/AlertDialog</item>
+    <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
+</style>
+
+</resources>
